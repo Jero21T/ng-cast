@@ -1,7 +1,17 @@
 angular.module('video-player')
 .component('videoPlayer', {
-  bindings: {
-    currentVideo: '<'
+  controller: function() {
+    //work on iframeContent property below
+    this.iframeContent = '<iframe class=\"embed-responsive-item\" src=\"{{\'https://www.youtube.com/embed/\'+$ctrl.video.id.videoId}}\" allowFullScreen></iframe>';
+    
+    if (!$this.video) {
+      console.log(ctrl);
+      this.iframeContent = 'Please wait';
+    }
   },
-  templateUrl: 'src/templates/videoPlayer.html',
+  bindings: {
+    video: '<'
+  },
+  
+  templateUrl: 'src/templates/videoPlayer.html'
 });
